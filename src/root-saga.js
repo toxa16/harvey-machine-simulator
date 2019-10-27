@@ -1,4 +1,4 @@
-import { call } from 'redux-saga/effects';
+import { call, put, take } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
 function websocketChannel(socket) {
@@ -36,8 +36,17 @@ function websocketChannel(socket) {
   });
 }
 
+function* watchChannel(channel) {
+  while (true) {
+    const action = yield take(channel);
+    console.log(action);
+    yield put(action);
+  }
+}
+
 export default function* rootSaga() {
   const url = 'ws://localhost:3001';  // env
   const socket = new WebSocket(url);
-  yield call(websocketChannel, socket);
+  const channel = yield call(websocketChannel, socket);
+  yield call(watchChannel, channel);
 }
