@@ -17,16 +17,21 @@ function websocketChannel(socket) {
     const onError = err => {
       console.error('websocket error');
       console.error(err);
-    }
+    };
+    const onClose = () => {
+      console.log('Control Server disconnected.');
+    };
 
     socket.addEventListener('open', onOpen);
     socket.addEventListener('error', onError);
     socket.addEventListener('message', onMessage);
+    socket.addEventListener('close', onClose);
 
     return () => {
       socket.removeEventListener('open', onOpen);
       socket.removeEventListener('error', onError);
-      socket.removeEventListener('message', onMessage)
+      socket.removeEventListener('message', onMessage);
+      socket.removeEventListener('close', onClose);
     }
   });
 }
