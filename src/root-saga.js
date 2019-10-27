@@ -53,6 +53,11 @@ function* runPowerStatus(socket) {
     action = { type: ActionType.MACHINE_STARTED };
     yield put(action);
     socket.send(JSON.stringify(action));
+    yield take(ActionType.MACHINE_STOP);
+    yield delay(1000);
+    action = { type: ActionType.MACHINE_STOPPED };
+    yield put(action);
+    socket.send(JSON.stringify(action));
   }
 }
 
