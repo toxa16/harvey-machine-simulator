@@ -23,6 +23,11 @@ export default function mainReducer(state = initialState, action) {
         powerStatus: PowerStatus.STARTING,
       });
     }
+    case ActionType.MACHINE_STARTED: {
+      return Object.assign({}, state, {
+        powerStatus: PowerStatus.STARTED,
+      });
+    }
     default: return state;
   }
 }
