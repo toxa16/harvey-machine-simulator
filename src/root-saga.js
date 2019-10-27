@@ -45,7 +45,8 @@ function* watchChannel(channel) {
 }
 
 export default function* rootSaga() {
-  const url = 'ws://localhost:3001';  // env
+  const url = process.env.REACT_APP_CONTROL_SERVER_URL ||
+    'ws://localhost:3001';
   const socket = new WebSocket(url);
   const channel = yield call(websocketChannel, socket);
   yield call(watchChannel, channel);
