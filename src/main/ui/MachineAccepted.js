@@ -16,7 +16,7 @@ export default function MachineAccepted({ powerStatus }) {
     switch (powerStatus) {
       case PowerStatus.STARTING: return 'text-warning';
       case PowerStatus.STARTED: return 'text-success';
-      case PowerStatus.STOPPING: return 'text-warning.';
+      case PowerStatus.STOPPING: return 'text-warning';
       default: return 'text-danger';
     }
   };

@@ -18,6 +18,11 @@ export default function mainReducer(state = initialState, action) {
         machineStatus: MachineStatus.ACCEPTED,
       });
     }
+    case ActionType.MACHINE_START: {
+      return Object.assign({}, state, {
+        powerStatus: PowerStatus.STARTING,
+      });
+    }
     default: return state;
   }
 }
