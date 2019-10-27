@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MachineAccepted() {
+export default function MachineAccepted({ powerStatus }) {
   return (
     <div>
       <span>Power status:</span>

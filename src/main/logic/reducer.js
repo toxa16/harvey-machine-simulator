@@ -1,8 +1,9 @@
 import ActionType from './action-type.enum';
-import { MachineStatus } from './enums';
+import { MachineStatus, PowerStatus } from './enums';
 
 const initialState = {
   machineStatus: MachineStatus.PENDING,
+  powerStatus: PowerStatus.STOPPED,
 };
 
 export default function mainReducer(state = initialState, action) {

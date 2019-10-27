@@ -2,8 +2,8 @@ import React from 'react';
 
 import MachinePending from './MachinePending';
 import MachineRejected from './MachineRejected';
-import MachineAccepted from './MachineAccepted';
 import { MachineStatus } from '../logic/enums';
+import ConnectedMachineAccepted from './ConnectedMachineAccepted';
 
 export default function Main({ machineStatus }) {
   const displayBody = () => {
@@ -12,7 +12,7 @@ export default function Main({ machineStatus }) {
         return <MachineRejected />;
       }
       case MachineStatus.ACCEPTED: {
-        return <MachineAccepted />;
+        return <ConnectedMachineAccepted />;
       }
       default: return <MachinePending />;
     }
