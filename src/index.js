@@ -13,7 +13,7 @@ import rootSaga from './root-saga';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({
-    controlPanel: mainReducer,
+    main: mainReducer,
   }),
   applyMiddleware(sagaMiddleware),
 );

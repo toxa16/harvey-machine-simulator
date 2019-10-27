@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Main from './Main';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    machineStatus: state.main.machineStatus,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,13 +1,28 @@
 import React from 'react';
 
-export default function Main() {
+import MachinePending from './MachinePending';
+import MachineRejected from './MachineRejected';
+import MachineAccepted from './MachineAccepted';
+import { MachineStatus } from '../logic/enums';
+
+export default function Main({ machineStatus }) {
+  const displayBody = () => {
+    switch (machineStatus) {
+      case MachineStatus.REJECTED: {
+        return <MachineRejected />;
+      }
+      case MachineStatus.ACCEPTED: {
+        return <MachineAccepted />;
+      }
+      default: return <MachinePending />;
+    }
+  };
+
   return (
     <div className="container pt-5">
       <h1 className="text-center">Machine Simulator</h1>
       <div className="mt-5">
-        <span>Power status:</span>
-        {' '}
-        <span className="text-danger">Stopped</span>
+        { displayBody() }
       </div>
     </div>
   );
